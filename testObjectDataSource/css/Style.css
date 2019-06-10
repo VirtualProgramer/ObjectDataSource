@@ -1,0 +1,28 @@
+﻿.flexRowBetween {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.flexColumnStart {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.flexRowStart {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.uuu-toggleItems {
+    display: none;
+    margin: 12px 24px;
+}
+
+.siteMapPath{
+    display:block;
+    float: left;
+    margin: 24px 0;
+}

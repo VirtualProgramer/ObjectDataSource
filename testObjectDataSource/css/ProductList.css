@@ -1,0 +1,27 @@
+﻿.prodListForm tr {
+    display: flex;
+    max-height: 80px;
+    width: 100%;
+}
+
+    .prodListForm tr > th,
+    .prodListForm tr > td {
+        width: 15%;
+    }
+
+        .prodListForm tr > th:first-child,
+        .prodListForm tr > td:first-child {
+            width: 40%;
+        }
+
+        .prodListForm tr > th:last-child,
+        .prodListForm tr > td:last-child {
+            text-align: center;
+        }
+
+    .prodListForm tr td .prodImg {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+    }

@@ -1,0 +1,45 @@
+﻿body {
+}
+
+.prodListForm {
+    margin-bottom: 30px;
+}
+
+.queryForm {
+    padding: 0;
+}
+
+.prodItem {
+    width: calc(25% - 32px);
+    position: relative;
+    float: left;
+    padding: 0;
+    margin: 0 16px;
+}
+
+@media (max-width:993px) {
+    .prodItem {
+        width: calc(50% - 32px);
+    }
+}
+
+
+
+.prodItemImg {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 125%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../img/noImg.png);
+}
+
+.buy-now-hover {
+    position: absolute;
+    outline: 1px solid red;
+    
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 62.5%;
+}

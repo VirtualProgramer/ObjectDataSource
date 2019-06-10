@@ -1,0 +1,25 @@
+﻿body {
+}
+
+.memberList {
+    margin: 0 0 20px 0;
+}
+
+.refreshButtonBar {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.refreshButton {
+    float: right;
+    border: 0;
+    height: 40px;
+    width: 100px;
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-size: large;
+    font-weight: 600;
+}

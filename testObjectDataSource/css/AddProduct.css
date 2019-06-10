@@ -1,0 +1,116 @@
+﻿body {
+}
+
+.addForm {
+    padding: 0 16px;
+}
+
+.addProduct {
+    width: 100%;
+    outline: 1px solid black;
+    margin: 16px 0;
+}
+
+.addProductL {
+    width: 40%
+}
+
+.addProductR {
+    width: 60%
+}
+
+@media (max-width:993px) {
+    .addProductL {
+        min-width: 280px;
+    }
+}
+
+@media (max-width:601px) {
+
+    .addProduct {
+        flex-direction: column;
+    }
+
+    .addProductL, .addProductR {
+        width: 100%
+    }
+
+    .addProductR {
+        padding: 0 15px 15px 15px;
+    }
+}
+
+
+.subRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    height: 25px;
+    width: 100%;
+    padding: 0 15px;
+    margin: 15px 0;
+}
+
+    .subRow .addProductTextBox {
+        padding: 0;
+        width: 100%;
+    }
+
+.addProductFileUpload {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc( 100% - 30px );
+}
+
+.addProductState {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 25px;
+}
+
+.addProductBtn {
+    padding: 0 15px 10px 15px;
+    margin: 0;
+    width: 100%;
+    height: 50px;
+}
+
+.addButton {
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Right Block */
+.imgPreview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    text-align: center;
+    height: 100%;
+}
+
+    .imgPreview p {
+        font-size: 36px;
+    }
+
+.imgUpload {
+    width: 100%;
+    display: none;
+}
+
+    .imgUpload #blah {
+        width: 100%;
+    }

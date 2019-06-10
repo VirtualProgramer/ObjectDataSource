@@ -1,0 +1,34 @@
+﻿.queryProduct {
+    background-color: silver;
+}
+
+.queryForm {
+    padding: 0 16px;
+}
+
+.queryDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 15px 0;
+    padding: 0 16px;
+}
+
+.queryButton {
+    width: 70px;
+}
+
+.queryTextBox {
+    margin: 0 15px;
+}
+
+#TextBox2,
+#TextBox1 {
+    display: block;
+    width: 100%;
+}
+
+.gridView {
+    position: relative;
+    width: 100%;
+}
