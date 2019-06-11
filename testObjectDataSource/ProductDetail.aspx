@@ -10,7 +10,7 @@
 
         Prod prod = pu.GetProduct(id);
 
-        Image1.ImageUrl = $"~/img/{prod.img}";
+        Image1.ImageUrl =  (prod.img == "") ? "~/img/default.png" : $"~/img/{prod.img}";
         Label1.Text = prod.name;
         Label2.Text = prod.price.ToString();
 

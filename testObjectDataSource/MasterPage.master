@@ -59,7 +59,9 @@
         </div>
 
         <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight: bold">
+
             <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+
             <a href="Login.aspx" class="w3-bar-item w3-button">
                 Login
             </a>
@@ -117,7 +119,11 @@
                 </p>
                 <asp:SiteMapPath ID="SiteMapPath1" class="siteMapPath" runat="server" ParentLevelsDisplayed="5" PathDirection="RootToCurrent" Visible="True"></asp:SiteMapPath>
                 <p class="w3-right">
-                    <i class="fa fa-shopping-cart w3-margin-right"></i>
+
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/ShoppingCartList.aspx">
+                        <i class="fa fa-shopping-cart w3-margin-right"></i>
+                    </asp:HyperLink>
+
                     <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">
                       <i class="fa fa-sign-out"></i>
                     </asp:LinkButton>
