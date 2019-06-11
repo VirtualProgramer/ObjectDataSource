@@ -8,6 +8,7 @@ using System.Web;
 /// </summary>
 public class ShoppingCart {
     public int ID { get; set; }
+    public string Name { get; set; }
     public int Price { get; set; }
     public int Count { get; set; }
     public string ImageFileName { get; set; }
@@ -18,8 +19,9 @@ public class ShoppingCartUtility {
         var query = from prod in prodList
                     select new ShoppingCart() {
                         ID = prod.id,
+                        Name = prod.name,
                         Price = prod.price,
-                        ImageFileName = prod.img,
+                        ImageFileName = (prod.img == "") ? "default.png" : prod.img,
                         Count = mapping[prod.id]
                     };
 
