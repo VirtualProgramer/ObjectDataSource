@@ -165,4 +165,26 @@ public class ProdUtility {
             };
         }
     }
+
+    public List<Prod> GetProductsByIDs(string idString) {
+        SqlDataAdapter da = new SqlDataAdapter(
+             $"select * from Products where id in ({idString})",
+             this.ConnectionString);
+
+        DataTable dt = new DataTable();
+
+        da.Fill(dt);
+
+        var query = from row in dt.AsEnumerable()
+                    select new Prod() {
+                         id = Convert.ToInt32(row["ID"]),
+                         name = row["Name"].ToString(),
+                         price = Convert.ToInt32(row["Price"]),
+                         count = Convert.ToInt32(row["Amount"]),
+                         img = row["ImageFileName"] is DBNull ? "" : row["ImageFileName"].ToString()
+                    };
+
+        return query.ToList();
+    }
+
 }
