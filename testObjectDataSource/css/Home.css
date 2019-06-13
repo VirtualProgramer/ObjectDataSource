@@ -23,8 +23,6 @@
     }
 }
 
-
-
 .prodItemImg {
     position: relative;
     width: 100%;
@@ -36,10 +34,21 @@
 }
 
 .buy-now-hover {
+    display: none;
     position: absolute;
     outline: 1px solid red;
-    
     transform: translate(-50%, -50%);
     left: 50%;
-    top: 62.5%;
+    top: 50%;
+}
+
+.prodItemImg:hover .buy-now-hover {
+    display: block;
+}
+
+.buy-now-hover a {
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
 }
