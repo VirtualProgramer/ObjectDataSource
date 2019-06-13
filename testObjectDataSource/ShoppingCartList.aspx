@@ -8,7 +8,7 @@
 
             string idString = string.Join(",", shoppingCart.Keys);
             ProdUtility pu = new ProdUtility();
-            List<Prod> prodList = pu.GetProductsByIDs(idString);
+            List<Product> prodList = pu.GetProductsByIDs(idString);
 
             ShoppingCartUtility scu = new ShoppingCartUtility();
             List<ShoppingCart> sList = scu.GetShoppingCartList(shoppingCart, prodList);

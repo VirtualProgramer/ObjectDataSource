@@ -7,11 +7,11 @@
         BulletedList1.Items.Clear();
         ProdUtility pu = new ProdUtility();
 
-        List<Prod> pdList = pu.GetAllProd();
+        List<Product> pdList = pu.GetAllProd();
         if (TextBox1.Text != "") {
-            foreach (Prod s in pdList) {
-                if (s.name.ToUpper().Contains(TextBox1.Text.ToUpper())) {
-                    BulletedList1.Items.Add(s.prodInfo());
+            foreach (Product s in pdList) {
+                if (s.Name.ToUpper().Contains(TextBox1.Text.ToUpper())) {
+                    BulletedList1.Items.Add("");
                 }
             }
         }
@@ -26,10 +26,10 @@
         if (!pbool) {
             BulletedList1.Items.Add("不要搞事");
         } else {
-            List<Prod> pdList = pu.GetAllProd();
-            foreach (Prod s in pdList) {
-                if (s.price >= price) {
-                    BulletedList1.Items.Add(s.prodInfo());
+            List<Product> pdList = pu.GetAllProd();
+            foreach (Product s in pdList) {
+                if (s.Price >= price) {
+                    BulletedList1.Items.Add("");
                 }
             }
         }

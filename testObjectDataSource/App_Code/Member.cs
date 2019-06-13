@@ -18,84 +18,42 @@ using System.Web.Configuration;
 //}
 
 public class MemberUtility {
-
-    private string ConnectionString;
+    
+    private MyDBEntities DB;
 
     public MemberUtility() {
-        ConnectionString = WebConfigurationManager.ConnectionStrings["MyDBConnectionString1"].ConnectionString;
+         DB = new MyDBEntities();
     }
 
     public List<Member> GetAllMembers() {
-
-        SqlDataAdapter da = new SqlDataAdapter("select * from members", this.ConnectionString);
-        DataTable dt = new DataTable();
-        da.Fill(dt);
-
-        var query = from row in dt.AsEnumerable()
-                    select new Member() {   UserName = row["UserName"].ToString(),  Password = row["Password"].ToString(),  Id = Convert.ToInt32(row["ID"]) };
-
-        return query.ToList();
+        return this.DB.Members.ToList();
     }
 
     public Member GetMember(int id) {
-        SqlDataAdapter da = new SqlDataAdapter(
-            "select * from members where Id=@Id", this.ConnectionString);
-
-        da.SelectCommand.Parameters.AddWithValue("@Id", id);
-
-        DataTable dt = new DataTable();
-
-        da.Fill(dt);
-
-        DataRow row = dt.Rows[0];
-
-        Member m = new Member() {
-             Id = Convert.ToInt32(row["ID"]),
-             UserName = row["UserName"].ToString(),
-             Password = row["Password"].ToString()
-        };
-
-        return m;
+        return this.DB.Members.SingleOrDefault(m => m.Id == id);
     }
 
     public bool CheckMember(string userName, string password) {
 
-        SqlDataAdapter da = new SqlDataAdapter("select * from members where UserName=@username and Password=@password", this.ConnectionString);
-        da.SelectCommand.Parameters.AddWithValue("@username", userName);
-        da.SelectCommand.Parameters.AddWithValue("@password", password);
+        Member member =
+            this.DB.Members.SingleOrDefault(m => m.UserName == userName && m.Password == password);
 
-        DataTable dt = new DataTable();
-        da.Fill(dt);
-
-        return dt.Rows.Count == 1;
+        return member != null;
     }
 
     public void UpdateMember(Member member) {
-        using (SqlConnection cn = new SqlConnection(this.ConnectionString)) {
-            SqlCommand cmd = new SqlCommand(
-                "update Members set UserName = @username , Password = @password where ID = @id",
-                cn);
+        this.DB.Entry(member).State = System.Data.Entity.EntityState.Modified;
 
-            cmd.Parameters.AddWithValue("@username", member.UserName);
-            cmd.Parameters.AddWithValue("@password", member.Password);
-            cmd.Parameters.AddWithValue("@id", member.Id);
-
-            cn.Open();
-            cmd.ExecuteNonQuery();
-        }
+        this.DB.SaveChanges();
     }
 
     public void DeleteMember(int id) {
-        using (SqlConnection cn = new SqlConnection(this.ConnectionString)) {
-            SqlCommand cmd = new SqlCommand(
-                "delete Members where ID = @id",
-                cn);
+        Member member =
+            this.DB.Members.SingleOrDefault(m => m.Id == id);
 
-            cmd.Parameters.AddWithValue("@id", id);
+        this.DB.Members.Remove(member);
 
-            cn.Open();
-            cmd.ExecuteNonQuery();
-        }
+        this.DB.SaveChanges();
     }
 
 }

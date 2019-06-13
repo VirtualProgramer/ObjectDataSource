@@ -8,11 +8,11 @@
 
         ProdUtility pu = new ProdUtility();
 
-        Prod prod = pu.GetProduct(id);
+        Product prod = pu.GetProduct(id);
 
-        Image1.ImageUrl =  (prod.img == "") ? "~/img/default.png" : $"~/img/{prod.img}";
-        Label1.Text = prod.name;
-        Label2.Text = prod.price.ToString();
+        Image1.ImageUrl =  (prod.ImageFileName == "") ? "~/img/default.png" : $"~/img/{prod.ImageFileName}";
+        Label1.Text = prod.Name;
+        Label2.Text = prod.Price.ToString();
 
     }
 

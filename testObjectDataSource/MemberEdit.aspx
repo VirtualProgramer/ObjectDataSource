@@ -16,7 +16,7 @@
                 Id:
             <asp:Label class="subRow" Text='<%# Eval("id") %>' runat="server" ID="IdLabel1" /><br />
                 UserName:
-            <asp:TextBox class="subRow" Text='<%# Bind("account") %>' runat="server" ID="UserNameTextBox" /><br />
+            <asp:TextBox class="subRow" Text='<%# Bind("UserName") %>' runat="server" ID="UserNameTextBox" /><br />
                 Password:
             <asp:TextBox class="subRow" Text='<%# Bind("password") %>' runat="server" ID="PasswordTextBox" /><br />
                 <asp:LinkButton class="addButton" runat="server" Text="Update" CommandName="Update" ID="UpdateButton" CausesValidation="True" />&nbsp;

@@ -6,7 +6,7 @@
         string prodName = TextBox1.Text;
 
         ProdUtility pu = new ProdUtility();
-        List<Prod> pdList = pu.GetAllProd();
+        List<Product> pdList = pu.GetAllProd();
 
         int priceCheck = 0;
         if (!int.TryParse(TextBox2.Text, out int pp) || pp <= 0 || !int.TryParse(TextBox3.Text, out int pn) || pn <= 0) {

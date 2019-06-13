@@ -40,7 +40,7 @@
                     <img src='img/member/img_avatar<%# MemberImgAvatar(Eval("Id")) %>.png'
                         class="w3-bar-item w3-circle" style="width: 85px">
                     <div class="w3-bar-item">
-                        <span class="w3-large"><%# Eval("account") %></span><br>
+                        <span class="w3-large"><%# Eval("UserName") %></span><br>
                         <span>Member ID - <%# Eval("Id") %></span>
                     </div>
                     <asp:HyperLink ID="HyperLink1" class="w3-bar-item w3-button w3-xlarge w3-right" runat="server"
