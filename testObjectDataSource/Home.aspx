@@ -11,7 +11,7 @@
     }
 
     public static string GetFileName(object obj) {
-        if (obj.ToString() == "") {
+        if (obj == null) {
             return "style=\"background-image:url('../img/default.png')\"";
         } else {
             return $"style=\"background-image:url('../img/{obj}')\"";
@@ -29,11 +29,13 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-    <div class=" flexColumnStart">
-
-
-        <div class="refreshButtonBar">
-            <asp:Button ID="Button1" class="refreshButton" runat="server" Text="Refresh" OnClick="Button1_Click" />
+    <div class="flexColumnStart">
+        <div class="cover flexRowStart">
+            <div class="coverImg"></div>
+            <div class="coverInfo flexColumnBetween">
+                <h3>Tom Clancy's Rainbow Six® Siege</h3>
+                <br/><h4>Purchase Now</h4>
+            </div>
         </div>
 
         <div class="w3-container w3-text-grey" id="jeans">
@@ -53,8 +55,7 @@
                     <%--<div class="prodItemImg" style=<%# GetFileName(Eval("img")) %>></div>--%>
                     <div class="prodItemImg" <%# GetFileName(Eval("ImageFileName")) %>>
                         <div class="buy-now-hover" style="width: 100%; height: 100%">
-                            <a class="w3-button w3-black" href='<%# Eval("Id" , "/ProductDetail.aspx?id={0}")%>'>
-                                Buy now <i class="fa fa-shopping-cart"></i>
+                            <a class="w3-button w3-black" href='<%# Eval("Id" , "/ProductDetail.aspx?id={0}")%>'>Buy now <i class="fa fa-shopping-cart"></i>
                             </a>
                         </div>
                     </div>

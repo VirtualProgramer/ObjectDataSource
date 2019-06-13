@@ -1,10 +1,4 @@
-﻿.flexRowBetween {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.flexColumnStart {
+﻿.flexColumnStart {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -16,6 +10,17 @@
     justify-content: flex-start;
 }
 
+.flexColumnBetween {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.flexRowBetween {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .uuu-toggleItems {
     display: none;
     margin: 12px 24px;

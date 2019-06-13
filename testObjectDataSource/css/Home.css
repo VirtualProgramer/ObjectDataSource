@@ -1,7 +1,4 @@
-﻿body {
-}
-
-.prodListForm {
+﻿.prodListForm {
     margin-bottom: 30px;
 }
 
@@ -17,9 +14,47 @@
     margin: 0 16px;
 }
 
+.cover {
+    background-color: gray;
+    margin: 0 16px;
+    padding: 0;
+}
+
+.coverInfo {
+    width: 30%;
+    color: white;
+    margin: auto 15px;
+}
+
+.coverInfo h3{
+    font-weight: 600;
+}
+
+    .coverInfo h4:hover {
+        color: black;
+        cursor:pointer;
+    }
+
+.coverImg {
+    width: 65%;
+    height: 400px;
+    background-image: url('../img/capsule_616x353(3).jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+
 @media (max-width:993px) {
     .prodItem {
         width: calc(50% - 32px);
+    }
+
+    .coverInfo {
+        display: none;
+    }
+
+    .coverImg {
+        width: 100%;
     }
 }
 
