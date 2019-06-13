@@ -56,13 +56,6 @@ public class ProdUtility {
 
         return product != null;
 
-        //SqlDataAdapter da = new SqlDataAdapter("select * from Products where Name=@prodName", this.ConnectionString);
-        //da.SelectCommand.Parameters.AddWithValue("@prodName", prodName);
-
-        //DataTable dt = new DataTable();
-        //da.Fill(dt);
-
-        //return dt.Rows.Count == 1;
     }
 
     public void IsertProd(string name, string price, string amount, FileUpload image) {

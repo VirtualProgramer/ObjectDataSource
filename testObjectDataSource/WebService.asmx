@@ -17,17 +17,6 @@ public class WebService : System.Web.Services.WebService {
         return "Hello World";
     }
 
-    //[WebMethod]
-    //public List<Member> GetMembers() {
-    //    List<Member> myList = new List<Member>() {
-    //        new Member(1 , "tony"),
-    //        new Member(2 , "mary"),
-    //        new Member(3 , "tim")
-    //    };
-
-    //    return myList;
-    //}
-
     [WebMethod]
     public List<Product> GetAllProd() {
 
