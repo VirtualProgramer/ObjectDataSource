@@ -34,65 +34,35 @@ using System.Web.UI;
 public class ProdUtility {
 
     private string ConnectionString;
+    private MyDBEntities DB;
 
     public ProdUtility() {
         ConnectionString = WebConfigurationManager.ConnectionStrings["MyDBConnectionString1"].ConnectionString;
+        DB = new MyDBEntities();
     }
 
     public List<Product> GetAllProd() {
-
-        SqlDataAdapter da = new SqlDataAdapter("select * from Products", this.ConnectionString);
-        DataTable dt = new DataTable();
-
-        da.Fill(dt);
-
-        var query = from row in dt.AsEnumerable()
-                    select new Product {
-                         Id = Convert.ToInt32(row["id"]),
-                         Name = row["Name"].ToString(),
-                         Price = int.Parse(row["Price"].ToString()),
-                         Amount = int.Parse(row["Amount"].ToString()),
-                         ImageFileName = row["ImageFileName"].ToString()
-                    };
-
-        return query.ToList();
-
+        return this.DB.Products.ToList();
     }
 
     public Product GetProduct(int id) {
-
-        SqlDataAdapter da = new SqlDataAdapter(
-            "select * from Products where id=@id", this.ConnectionString);
-
-        da.SelectCommand.Parameters.AddWithValue("@id", id);
-
-        DataTable dt = new DataTable();
-
-        da.Fill(dt);
-
-        if (dt.Rows.Count == 0) {
-            return null;
-        } else {
-            return new Product() {
-                 Id = Convert.ToInt32(dt.Rows[0]["ID"]),
-                 Name = dt.Rows[0]["Name"].ToString(),
-                 Price = Convert.ToInt32(dt.Rows[0]["Price"]),
-                 Amount = Convert.ToInt32(dt.Rows[0]["Amount"]),
-                 ImageFileName = dt.Rows[0]["ImageFileName"] is DBNull ? "" : dt.Rows[0]["ImageFileName"].ToString()
-            };
-        }
-
+        return this.DB.Products.SingleOrDefault(m => m.Id == id);
     }
 
     public bool CheckProd(string prodName) {
 
-        SqlDataAdapter da = new SqlDataAdapter("select * from Products where Name=@prodName", this.ConnectionString);
-        da.SelectCommand.Parameters.AddWithValue("@prodName", prodName);
+        Product product =
+            this.DB.Products.SingleOrDefault(p => p.Name == prodName);
 
-        DataTable dt = new DataTable();
-        da.Fill(dt);
+        return product != null;
 
-        return dt.Rows.Count == 1;
+        //SqlDataAdapter da = new SqlDataAdapter("select * from Products where Name=@prodName", this.ConnectionString);
+        //da.SelectCommand.Parameters.AddWithValue("@prodName", prodName);
+
+        //DataTable dt = new DataTable();
+        //da.Fill(dt);
+
+        //return dt.Rows.Count == 1;
     }
 
     public void IsertProd(string name, string price, string amount, FileUpload image) {
@@ -127,20 +97,9 @@ public class ProdUtility {
     }
 
     public void UpdateProduct(Product p) {
-        using (SqlConnection cn = new SqlConnection(this.ConnectionString)) {
-            SqlCommand cmd = new SqlCommand(
-                "UPDATE[Products] SET[Name] = @Name, [Price] = @Price, [Amount] = @Amount, [ImageFileName] = @image WHERE[Id] = @Id",
-                cn);
+        this.DB.Entry(p).State = System.Data.Entity.EntityState.Modified;
 
-            cmd.Parameters.AddWithValue("@Id", p.Id);
-            cmd.Parameters.AddWithValue("@Name", p.Name);
-            cmd.Parameters.AddWithValue("@Price", p.Price);
-            cmd.Parameters.AddWithValue("@Amount", p.Amount);
-            cmd.Parameters.AddWithValue("@image", p.ImageFileName);
-
-            cn.Open();
-            cmd.ExecuteNonQuery();
-        }
+        this.DB.SaveChanges();
     }
 
     public Product QueryProduct(string name) {
@@ -157,34 +116,26 @@ public class ProdUtility {
             return null;
         } else {
             return new Product() {
-                 Id = Convert.ToInt32(dt.Rows[0]["ID"]),
-                 Name = dt.Rows[0]["Name"].ToString(),
-                 Price = Convert.ToInt32(dt.Rows[0]["Price"]),
-                 Amount = Convert.ToInt32(dt.Rows[0]["Amount"]),
-                 ImageFileName = dt.Rows[0]["ImageFileName"] is DBNull ? "" : dt.Rows[0]["ImageFileName"].ToString()
+                Id = Convert.ToInt32(dt.Rows[0]["ID"]),
+                Name = dt.Rows[0]["Name"].ToString(),
+                Price = Convert.ToInt32(dt.Rows[0]["Price"]),
+                Amount = Convert.ToInt32(dt.Rows[0]["Amount"]),
+                ImageFileName = dt.Rows[0]["ImageFileName"] is DBNull ? "" : dt.Rows[0]["ImageFileName"].ToString()
             };
         }
     }
 
     public List<Product> GetProductsByIDs(string idString) {
-        SqlDataAdapter da = new SqlDataAdapter(
-             $"select * from Products where id in ({idString})",
-             this.ConnectionString);
+        string[] idAry = idString.Split(',');
 
-        DataTable dt = new DataTable();
+        var query = from id in idAry
+                    select int.Parse(id);
 
-        da.Fill(dt);
+        List<int> idList = query.ToList();
 
-        var query = from row in dt.AsEnumerable()
-                    select new Product() {
-                          Id = Convert.ToInt32(row["ID"]),
-                          Name = row["Name"].ToString(),
-                          Price = Convert.ToInt32(row["Price"]),
-                          Amount = Convert.ToInt32(row["Amount"]),
-                          ImageFileName = row["ImageFileName"] is DBNull ? "" : row["ImageFileName"].ToString()
-                    };
+        List<Product> prodList = this.DB.Products.Where(p => idList.Contains(p.Id)).ToList();
 
-        return query.ToList();
+        return prodList;
     }
 
 }
