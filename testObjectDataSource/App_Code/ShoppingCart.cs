@@ -15,14 +15,14 @@ public class ShoppingCart {
 }
 
 public class ShoppingCartUtility {
-    public List<ShoppingCart> GetShoppingCartList(Dictionary<int, int> mapping, List<Prod> prodList) {
+    public List<ShoppingCart> GetShoppingCartList(Dictionary<int, int> mapping, List<Product> prodList) {
         var query = from prod in prodList
                     select new ShoppingCart() {
-                        ID = prod.id,
-                        Name = prod.name,
-                        Price = prod.price,
-                        ImageFileName = (prod.img == "") ? "default.png" : prod.img,
-                        Count = mapping[prod.id]
+                        ID = prod.Id,
+                        Name = prod.Name,
+                        Price = prod.Price,
+                        ImageFileName = (prod.ImageFileName == "") ? "default.png" : prod.ImageFileName,
+                        Count = mapping[prod.Id]
                     };
 
         return query.ToList();

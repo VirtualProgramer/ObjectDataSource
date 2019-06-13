@@ -10,12 +10,12 @@ using System.Web.Configuration;
 /// Summary description for Member
 /// </summary>
 
-public class Member {
-    public int id { get; set; }
-    public string account { get; set; }
-    public string password { get; set; }
+//public class Member {
+//    public int id { get; set; }
+//    public string account { get; set; }
+//    public string password { get; set; }
 
-}
+//}
 
 public class MemberUtility {
 
@@ -32,7 +32,7 @@ public class MemberUtility {
         da.Fill(dt);
 
         var query = from row in dt.AsEnumerable()
-                    select new Member() { account = row["UserName"].ToString(), password = row["Password"].ToString(), id = Convert.ToInt32(row["ID"]) };
+                    select new Member() {   UserName = row["UserName"].ToString(),  Password = row["Password"].ToString(),  Id = Convert.ToInt32(row["ID"]) };
 
         return query.ToList();
     }
@@ -50,9 +50,9 @@ public class MemberUtility {
         DataRow row = dt.Rows[0];
 
         Member m = new Member() {
-            id = Convert.ToInt32(row["ID"]),
-            account = row["UserName"].ToString(),
-            password = row["Password"].ToString()
+             Id = Convert.ToInt32(row["ID"]),
+             UserName = row["UserName"].ToString(),
+             Password = row["Password"].ToString()
         };
 
         return m;
@@ -76,9 +76,9 @@ public class MemberUtility {
                 "update Members set UserName = @username , Password = @password where ID = @id",
                 cn);
 
-            cmd.Parameters.AddWithValue("@username", member.account);
-            cmd.Parameters.AddWithValue("@password", member.password);
-            cmd.Parameters.AddWithValue("@id", member.id);
+            cmd.Parameters.AddWithValue("@username", member.UserName);
+            cmd.Parameters.AddWithValue("@password", member.Password);
+            cmd.Parameters.AddWithValue("@id", member.Id);
 
             cn.Open();
             cmd.ExecuteNonQuery();

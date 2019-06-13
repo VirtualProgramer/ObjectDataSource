@@ -5,7 +5,7 @@
     private void pdListGridView() {
 
         ProdUtility pu = new ProdUtility();
-        List<Prod> pdList = pu.GetAllProd();
+        List<Product> pdList = pu.GetAllProd();
         GridView1.DataSource = pdList;
         GridView1.DataBind();
     }
@@ -51,9 +51,9 @@
                 <div class="w3-container prodItem">
                     <%--<div class="prodItemNoImg"></div>--%>
                     <%--<div class="prodItemImg" style=<%# GetFileName(Eval("img")) %>></div>--%>
-                    <div class="prodItemImg" <%# GetFileName(Eval("img")) %>>
+                    <div class="prodItemImg" <%# GetFileName(Eval("ImageFileName")) %>>
                         <div class="buy-now-hover" style="width: 100%; height: 100%">
-                            <a class="w3-button w3-black" href='<%# Eval("ID" , "/ProductDetail.aspx?id={0}")%>'>Buy now <i class="fa fa-shopping-cart"></i>
+                            <a class="w3-button w3-black" href='<%# Eval("Id" , "/ProductDetail.aspx?id={0}")%>'>Buy now <i class="fa fa-shopping-cart"></i>
                             </a>
                         </div>
                     </div>
@@ -64,8 +64,8 @@
                     </div>--%>
 
                     <p>
-                        <%# Eval("name") %><br>
-                        <b>$<%# Eval("price") %></b>
+                        <%# Eval("Name") %><br>
+                        <b>$<%# Eval("Price") %></b>
                     </p>
                 </div>
 
