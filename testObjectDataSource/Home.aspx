@@ -66,15 +66,15 @@
                             `<div class="w3-container prodItem">` +
                             `   <div class="prodItemImg" style="background-image:url('../img/${GetFileNameAJAX(item.ImageFileName)}')"` +
                             `   </div>` +
-                            `   <div class="buy-now-hover" style="width: 100%; height: 100%">`+
-                            `       <a class="w3-button w3-black" href='/ProductDetail.aspx?id=${item.Id}'>`+
+                            `   <div class="buy-now-hover" style="width: 100%; height: 100%">` +
+                            `       <a class="w3-button w3-black" href='/ProductDetail.aspx?id=${item.Id}'>` +
                             `           Buy now <i class="fa fa-shopping-cart"></i>` +
                             `       </a>` +
-                            `   </div>`+
+                            `   </div>` +
                             `</div>` +
                             `   <p>` +
                             `      ${item.Name}<br>` +
-                            `      <b>$${item.Price}</b>` +
+                            `      <b>$ ${item.Price}</b>` +
                             `   </p>` +
                             `</div>`
                         );

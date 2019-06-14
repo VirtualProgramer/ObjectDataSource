@@ -131,4 +131,27 @@ public class ProdUtility {
         return prodList;
     }
 
+    public List<Product> GetProductByName(string name) {
+
+        SqlDataAdapter da = new SqlDataAdapter(
+            "select * from Products where Name like '%' + @name + '%'", this.ConnectionString);
+
+        da.SelectCommand.Parameters.AddWithValue("@name", name);
+
+        DataTable dt = new DataTable();
+
+        da.Fill(dt);
+
+        var query = from row in dt.AsEnumerable()
+                    select new Product() {
+                        Id = Convert.ToInt32(row["ID"]),
+                        Name = row["Name"].ToString(),
+                        Price = Convert.ToInt32(row["Price"]),
+                        Amount = Convert.ToInt32(row["Amount"]),
+                        ImageFileName = row["ImageFileName"] is DBNull ? "" : row["ImageFileName"].ToString()
+                    };
+
+        return query.ToList();
+    }
+
 }

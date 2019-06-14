@@ -24,5 +24,12 @@ public class WebService : System.Web.Services.WebService {
         return pu.GetAllProd();
     }
 
+    [WebMethod]
+    public List<Product> GetProductsByName(string name) {
+
+        ProdUtility pu = new ProdUtility();
+        return pu.GetProductByName(name);
+    }
+
 }
 

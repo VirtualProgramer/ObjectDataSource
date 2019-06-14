@@ -7,7 +7,7 @@
     }
 
     public static string GetFileName(object obj) {
-        if (obj.ToString() == "") {
+        if (obj == null) {
             return "/img/default.png";
         } else {
             return $"/img/{obj}";
@@ -36,11 +36,11 @@
                 </HeaderTemplate>
                 <ItemTemplate>
                     <tr>
-                        <td><%# Eval("name") %></td>
-                        <td><%# Eval("price") %></td>
-                        <td><%# Eval("count") %></td>
+                        <td><%# Eval("Name") %></td>
+                        <td><%# Eval("Price") %></td>
+                        <td><%# Eval("Amount") %></td>
                         <td>
-                            <div class="prodImg" style="background-image:url('..<%# GetFileName(Eval("img")) %>');"></div>
+                            <div class="prodImg" style="background-image:url('..<%# GetFileName(Eval("ImageFileName")) %>');"></div>
                         </td>
                         <td>
                             <asp:HyperLink ID="HyperLink1" runat="server"

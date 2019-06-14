@@ -27,11 +27,11 @@
                 id:
                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("id") %>'></asp:Label><br />
                 name:
-                <asp:TextBox Text='<%# Bind("name") %>' runat="server" ID="nameTextBox" /><br />
+                <asp:TextBox Text='<%# Bind("Name") %>' runat="server" ID="nameTextBox" /><br />
                 price:
-                <asp:TextBox Text='<%# Bind("price") %>' runat="server" ID="priceTextBox" /><br />
+                <asp:TextBox Text='<%# Bind("Price") %>' runat="server" ID="priceTextBox" /><br />
                 count:
-                <asp:TextBox Text='<%# Bind("count") %>' runat="server" ID="countTextBox" /><br />
+                <asp:TextBox Text='<%# Bind("Amount") %>' runat="server" ID="countTextBox" /><br />
                 img:
                 <asp:FileUpload ID="FileUpload1" runat="server" FileBytes='<%# Bind("img") %>' />
                 <label id="FileUploadLabel"></label>
@@ -42,15 +42,15 @@
             </EditItemTemplate>
             <InsertItemTemplate>
                 id:
-                <asp:TextBox Text='<%# Bind("id") %>' runat="server" ID="idTextBox" /><br />
+                <asp:TextBox Text='<%# Bind("Id") %>' runat="server" ID="idTextBox" /><br />
                 name:
-                <asp:TextBox Text='<%# Bind("name") %>' runat="server" ID="nameTextBox" /><br />
+                <asp:TextBox Text='<%# Bind("Name") %>' runat="server" ID="nameTextBox" /><br />
                 price:
-                <asp:TextBox Text='<%# Bind("price") %>' runat="server" ID="priceTextBox" /><br />
+                <asp:TextBox Text='<%# Bind("Price") %>' runat="server" ID="priceTextBox" /><br />
                 count:
-                <asp:TextBox Text='<%# Bind("count") %>' runat="server" ID="countTextBox" /><br />
+                <asp:TextBox Text='<%# Bind("Amount") %>' runat="server" ID="countTextBox" /><br />
                 img:
-                <asp:TextBox Text='<%# Bind("img") %>' runat="server" ID="imgTextBox" /><br />
+                <asp:TextBox Text='<%# Bind("ImageFileName") %>' runat="server" ID="imgTextBox" /><br />
                 <asp:LinkButton runat="server" Text="插入" CommandName="Insert" ID="InsertButton" CausesValidation="True" />&nbsp;<asp:LinkButton runat="server" Text="取消" CommandName="Cancel" ID="InsertCancelButton" CausesValidation="False" />
             </InsertItemTemplate>
             <ItemTemplate>
@@ -61,9 +61,9 @@
                 price:
                 <asp:Label Text='<%# Bind("price") %>' runat="server" ID="priceLabel" /><br />
                 count:
-                <asp:Label Text='<%# Bind("count") %>' runat="server" ID="countLabel" /><br />
+                <asp:Label Text='<%# Bind("Amount") %>' runat="server" ID="countLabel" /><br />
                 img:
-                <asp:Label Text='<%# Bind("img") %>' runat="server" ID="imgLabel" /><br />
+                <asp:Label Text='<%# Bind("ImageFileName") %>' runat="server" ID="imgLabel" /><br />
                 <asp:LinkButton runat="server" Text="編輯" CommandName="Edit" ID="EditButton" CausesValidation="False" />
             </ItemTemplate>
         </asp:FormView>

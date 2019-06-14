@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
 
-  <siteMapNode url="" title="" description="">
-    <siteMapNode url="Home.aspx" title="Home"  description="" />
-    <siteMapNode url="" title="Functions"  description="">
-      <siteMapNode url="AddProd.aspx" title="Add"  description="" />
-      <siteMapNode url="" title="Update"  description="" />
-      <siteMapNode url="ProductList.aspx" title="List"  description="" />
-      <siteMapNode url="QueryProduct.aspx" title="Query"  description="" />
+    <siteMapNode url="" title="" description="">
+        <siteMapNode url="Home.aspx" title="Home"  description="" />
+        <siteMapNode url="" title="Functions"  description="">
+            <siteMapNode url="AddProd.aspx" title="Add"  description="" />
+            <siteMapNode url="ProductList.aspx" title="List"  description="" >
+                <siteMapNode url="ProductEdit.aspx" title="Update"  description="" />
+            </siteMapNode>
+            <siteMapNode url="QueryProduct.aspx" title="Query"  description="" />
+        </siteMapNode>
+        <siteMapNode url="" title="Members"  description="">
+            <siteMapNode url="" title="Sing up"  description="" />
+            <siteMapNode url="MemberList.aspx" title="MemberList"  description="" >
+               <siteMapNode url="MemberEdit.aspx" title="Edit"  description="" />
+            </siteMapNode>
+            <siteMapNode url="" title="Search"  description="" />
+        </siteMapNode>
     </siteMapNode>
-    <siteMapNode url="" title="Members"  description="">
-      <siteMapNode url="" title="Sing up"  description="" />
-      <siteMapNode url="" title="Update"  description="" />
-      <siteMapNode url="MemberList.aspx" title="MemberList"  description="" >
-        <siteMapNode url="MemberEdit.aspx" title="Edit"  description="" />
-      </siteMapNode>
-      <siteMapNode url="" title="Search"  description="" />
-    </siteMapNode>
-  </siteMapNode>
-  
+
 </siteMap>
